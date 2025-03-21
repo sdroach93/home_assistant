@@ -1,0 +1,2138 @@
+views:
+  - type: sections
+    max_columns: 5
+    title: Home
+    path: home
+    sections:
+      - type: grid
+        cards:
+          - type: vertical-stack
+            cards:
+              - show_current: true
+                show_forecast: true
+                type: weather-forecast
+                entity: weather.forecast_home
+                forecast_type: hourly
+              - show_current: false
+                show_forecast: true
+                type: weather-forecast
+                entity: weather.home
+                forecast_type: daily
+                secondary_info_attribute: temperature
+              - type: entities
+                entities:
+                  - entity: sensor.living_room_ir_blaster_temperature
+                    name: Living Room Temperature
+                  - entity: sensor.bedroom_ir_blaster_temperature
+                    name: Bedroom Temperature
+                  - entity: sensor.blue_room_thermometer_temperature
+                    name: 'Blue Room Temperature '
+                  - entity: sensor.home_realfeel_temperature
+                    name: 'Outside Feels Like '
+                  - entity: sensor.sun_next_setting
+                  - entity: sensor.sun_next_rising
+      - type: grid
+        cards:
+          - type: vertical-stack
+            cards:
+              - square: true
+                type: grid
+                columns: 3
+                title: Room Controls
+                cards:
+                  - type: custom:button-card
+                    name: Kitchen
+                    icon: mdi:stove
+                    tap_action:
+                      action: navigate
+                      navigation_path: /mobile-dev/kitchen
+                    styles:
+                      card:
+                        - height: 150px
+                      icon:
+                        - width: 75px
+                        - height: 75px
+                  - type: custom:button-card
+                    name: Living Room
+                    icon: mdi:sofa-outline
+                    tap_action:
+                      action: navigate
+                      navigation_path: /mobile-dev/living-room
+                    hold_action:
+                      action: toggle
+                      entity: light.living_room
+                    styles:
+                      card:
+                        - height: 150px
+                      icon:
+                        - width: 75px
+                        - height: 75px
+                  - type: custom:button-card
+                    name: Bedroom
+                    icon: mdi:bed-double-outline
+                    tap_action:
+                      action: navigate
+                      navigation_path: /mobile-dev/bedroom
+                    hold_action:
+                      action: toggle
+                      entity: light.bedroom
+                    styles:
+                      card:
+                        - height: 150px
+                      icon:
+                        - width: 75px
+                        - height: 75px
+                  - type: custom:button-card
+                    name: Outside
+                    icon: mdi:tree-outline
+                    tap_action:
+                      action: navigate
+                      navigation_path: /mobile-dev/outside
+                    styles:
+                      card:
+                        - height: 150px
+                      icon:
+                        - width: 75px
+                        - height: 75px
+                  - type: custom:button-card
+                    name: Bathroom
+                    icon: mdi:toilet
+                    tap_action:
+                      action: navigate
+                      navigation_path: /mobile-dev/bathroom
+                    styles:
+                      card:
+                        - height: 150px
+                      icon:
+                        - width: 75px
+                        - height: 75px
+                  - type: custom:button-card
+                    name: Blue Room
+                    icon: mdi:bookshelf
+                    tap_action:
+                      action: navigate
+                      navigation_path: /mobile-dev/blue-room
+                    hold_action:
+                      action: navigate
+                      navigation_path: /mobile-dev/admin
+                    styles:
+                      card:
+                        - height: 150px
+                      icon:
+                        - width: 75px
+                        - height: 75px
+              - square: true
+                type: grid
+                columns: 3
+                title: Functions
+                cards:
+                  - type: custom:button-card
+                    name: Lights
+                    icon: mdi:lightbulb-multiple-outline
+                    tap_action:
+                      action: navigate
+                      navigation_path: /mobile-dev/lights-mobile
+                    styles:
+                      card:
+                        - height: 150px
+                      icon:
+                        - width: 75px
+                        - height: 75px
+                  - type: custom:button-card
+                    name: Climate
+                    icon: mdi:home-thermometer-outline
+                    tap_action:
+                      action: navigate
+                      navigation_path: /mobile-dev/thermostats
+                    styles:
+                      card:
+                        - height: 150px
+                      icon:
+                        - width: 75px
+                        - height: 75px
+                  - type: custom:button-card
+                    name: Cameras
+                    icon: mdi:cctv
+                    tap_action:
+                      action: navigate
+                      navigation_path: /mobile-dev/camera-feeds
+                    styles:
+                      card:
+                        - height: 150px
+                      icon:
+                        - width: 75px
+                        - height: 75px
+                  - type: custom:button-card
+                    name: Automation
+                    icon: mdi:robot-outline
+                    tap_action:
+                      action: navigate
+                      navigation_path: /mobile-dev/automations
+                    styles:
+                      card:
+                        - height: 150px
+                      icon:
+                        - width: 75px
+                        - height: 75px
+                  - type: custom:button-card
+                    name: Meds
+                    icon: mdi:pill-multiple
+                    tap_action:
+                      action: navigate
+                      navigation_path: /mobile-dev/medications
+                    styles:
+                      card:
+                        - height: 150px
+                      icon:
+                        - width: 75px
+                        - height: 75px
+                  - type: custom:button-card
+                    name: Away Mode
+                    entity: input_boolean.away_mode
+                    icon: mdi:home-off-outline
+                    tap_action:
+                      action: toggle
+                    state:
+                      - value: 'on'
+                        styles:
+                          card:
+                            - background-color: '#FFA500'
+                          icon:
+                            - color: white
+                      - value: 'off'
+                        styles:
+                          card:
+                            - background-color: var(--ha-card-background)
+                          icon:
+                            - color: var(--primary-text-color)
+                    styles:
+                      card:
+                        - height: 150px
+                      icon:
+                        - width: 75px
+                        - height: 75px
+  - type: sections
+    max_columns: 4
+    title: Kitchen
+    path: kitchen
+    sections:
+      - type: grid
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: light
+                entity: light.kitchen
+                icon: mdi:ceiling-light-outline
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: light.carport
+                icon: mdi:string-lights
+                show_state: false
+            title: Kitchen Lights
+      - type: grid
+        cards:
+          - type: entities
+            entities:
+              - entity: scene.kitchen_kitchen_bright
+                secondary_info: last-changed
+                icon: mdi:weather-sunny
+              - entity: scene.kitchen_natural_light
+                icon: mdi:weather-sunny
+                secondary_info: last-changed
+              - entity: scene.kitchen_relax
+                icon: mdi:emoticon-cool
+                secondary_info: last-changed
+              - entity: scene.kitchen_nightlight
+                icon: mdi:moon-waning-crescent
+                secondary_info: last-changed
+            title: Lighting Scenes
+          - show_state: true
+            show_name: true
+            camera_view: auto
+            type: picture-entity
+            entity: camera.kitchen_carport_camera
+            camera_image: camera.kitchen_carport_camera
+            hold_action:
+              action: navigate
+              navigation_path: /mobile-dashboard-beta/camera-feeds
+          - square: false
+            type: grid
+            cards:
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: button.kitchen_camera_move_up
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: button.kitchen_camera_move_down
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: button.kitchen_camera_move_left
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: button.kitchen_camera_move_right
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: switch.kitchen_camera_privacy
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: switch.kitchen_camera_auto_track
+                show_state: false
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: perform-action
+                  perform_action: script.toggle_kitchen_camera_preset
+                  target: {}
+                entity: select.kitchen_camera_move_to_preset
+                show_state: false
+                hold_action:
+                  action: perform-action
+                  perform_action: script.toggle_kitchen_camera_preset_kitchen
+                  target: {}
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: perform-action
+                  perform_action: script.toggle_kitchen_camera_patrol_on
+                  target: {}
+                show_state: false
+                hold_action:
+                  action: perform-action
+                  perform_action: script.toggle_kitchen_camera_patrol_off
+                  target: {}
+                entity: select.kitchen_camera_patrol_mode
+            columns: 4
+    subview: true
+    cards: []
+  - type: sections
+    max_columns: 3
+    title: Living Room
+    path: living-room
+    sections:
+      - type: grid
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: entities
+                entities:
+                  - entity: sensor.living_room_ir_blaster_temperature
+                    name: Living Room Temp
+                  - entity: sensor.home_realfeel_temperature
+                    name: Outdoor Feels Like
+                title: Current Temps
+              - square: false
+                type: grid
+                title: Mini Split
+                columns: 3
+                cards:
+                  - type: custom:button-card
+                    entity: input_select.mini_split_mode
+                    tap_action:
+                      action: call-service
+                      service: input_select.select_next
+                      target:
+                        entity_id: input_select.mini_split_mode
+                    show_state: false
+                    show_last_changed: true
+                    name: '[[[ return entity.state; ]]]'
+                    icon: |
+                      [[[
+                        return entity.state === "Heat" ? "mdi:fire"
+                             : entity.state === "Cool" ? "mdi:snowflake"
+                             : entity.state === "Fan" ? "mdi:fan"
+                             : "mdi:power";
+                      ]]]
+                    styles:
+                      card:
+                        - background-color: "[[[\n  return entity.state === \"Heat\" ? \"#FFA500\"  /* Orange */\n       : entity.state === \"Cool\" ? \"#00BFFF\t\"  /* Light Blue */\n       : entity.state === \"Fan\" ? \"#32CD32\"  /* Green */\n       : \"var(--card-background-color)\";  /* Default */\n]]]\n"
+                        - color: black
+                  - type: custom:button-card
+                    entity: script.living_room_mini_split_off
+                    name: Power Off
+                    icon: mdi:power
+                    tap_action:
+                      action: call-service
+                      service: script.living_room_mini_split_off
+                    show_last_changed: true
+                  - type: custom:button-card
+                    entity: script.living_room_fan
+                    name: Fan
+                    icon: mdi:fan
+                    tap_action:
+                      action: call-service
+                      service: script.living_room_fan
+                    show_last_changed: true
+                  - type: custom:button-card
+                    entity: script.living_room_night_heat
+                    name: Heat (70)
+                    icon: mdi:fire
+                    tap_action:
+                      action: call-service
+                      service: script.living_room_night_heat
+                    show_last_changed: true
+                  - type: custom:button-card
+                    entity: script.living_room_maintain_heat_74
+                    name: Heat (74)
+                    icon: mdi:fire
+                    tap_action:
+                      action: call-service
+                      service: script.living_room_maintain_heat_74
+                    show_last_changed: true
+                  - type: custom:button-card
+                    entity: script.living_room_cold_62
+                    name: Cold (62)
+                    icon: mdi:snowflake
+                    tap_action:
+                      action: call-service
+                      service: script.living_room_cold_62
+                    show_last_changed: true
+                  - type: custom:button-card
+                    entity: script.living_room_day_warm_up_76
+                    name: Heat (76)
+                    icon: mdi:fire
+                    tap_action:
+                      action: call-service
+                      service: script.living_room_day_warm_up_76
+                    show_last_changed: true
+                  - type: custom:button-card
+                    entity: script.living_room_rapid_head_80
+                    name: Heat (80)
+                    icon: mdi:fire
+                    tap_action:
+                      action: call-service
+                      service: script.living_room_rapid_head_80
+                    show_last_changed: true
+                  - type: custom:button-card
+                    entity: script.living_room_cool_66
+                    name: Cool (66)
+                    icon: mdi:snowflake
+                    tap_action:
+                      action: call-service
+                      service: script.living_room_cool_66
+                    show_last_changed: true
+      - type: grid
+        cards:
+          - type: vertical-stack
+            cards:
+              - square: false
+                type: grid
+                cards:
+                  - type: light
+                    entity: light.living_room
+                  - type: light
+                    entity: light.floor_lamp
+                    icon: mdi:floor-lamp-torchiere-outline
+                  - type: light
+                    entity: light.couch_reading_light
+                    name: Reading Light
+                    icon: mdi:wall-sconce
+                  - type: light
+                    entity: light.lr_candle
+                    name: Candle
+                    icon: mdi:candle
+                  - type: light
+                    entity: light.table_lamp
+                    name: Table Lamp
+                    icon: mdi:fish
+                  - type: light
+                    entity: light.dining_room_lamp
+                    name: Dining Lamp
+                    icon: mdi:lamp
+                columns: 3
+              - type: entities
+                entities:
+                  - entity: scene.living_room_autumn_gold
+                  - entity: scene.living_room_read
+                  - entity: scene.living_room_movie_lights
+                  - entity: scene.living_room_hockey_b_r
+            title: Living Room Lights
+      - type: grid
+        cards:
+          - type: media-control
+            entity: media_player.living_room_tv
+          - show_state: true
+            show_name: true
+            camera_view: auto
+            type: picture-entity
+            image: https://demo.home-assistant.io/stub_config/bedroom.png
+            entity: camera.living_room_camera
+            camera_image: camera.living_room_camera
+            hold_action:
+              action: navigate
+              navigation_path: /mobile-dashboard-beta/camera-feeds
+          - square: false
+            type: grid
+            cards:
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: button.living_room_camera_move_up
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: button.living_room_camera_move_down
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: button.living_room_camera_move_left
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: button.living_room_camera_move_right
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: switch.living_room_camera_privacy
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: switch.living_room_camera_auto_track
+                show_state: false
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: perform-action
+                  perform_action: script.toggle_living_room_camera_preset_doors
+                  target: {}
+                show_state: false
+                hold_action:
+                  action: perform-action
+                  perform_action: script.toggle_living_room_camera_preset_couch
+                  target: {}
+                entity: select.living_room_camera_move_to_preset
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: perform-action
+                  perform_action: script.toggle_living_room_camera_patrol_on
+                  target: {}
+                show_state: false
+                hold_action:
+                  action: perform-action
+                  perform_action: script.toggle_living_room_camera_patrol_off
+                  target: {}
+                entity: select.living_room_camera_patrol_mode
+            columns: 4
+    subview: true
+    cards: []
+  - type: sections
+    max_columns: 4
+    title: Bedroom
+    path: bedroom
+    sections:
+      - type: grid
+        cards:
+          - type: entities
+            entities:
+              - entity: sensor.bedroom_ir_blaster_temperature
+                name: Bedroom Temperature
+              - entity: sensor.home_realfeel_temperature
+                name: Outside Feels Like
+          - type: vertical-stack
+            cards:
+              - square: false
+                type: grid
+                cards:
+                  - type: light
+                    entity: light.bedroom
+                  - type: light
+                    entity: light.hallway
+                    icon: mdi:wall-sconce
+                  - type: light
+                    entity: light.bedroom_ceiling
+                    icon: mdi:ceiling-light
+                    name: Ceiling
+                  - type: light
+                    entity: light.bedside_ss
+                    name: SS Bedside
+                    icon: mdi:lamp
+                  - type: light
+                    entity: light.bedside_sr
+                    name: SR Bedside
+                    icon: mdi:lamp
+                  - type: light
+                    entity: light.bedroom_candle
+                    name: Candle
+                    icon: mdi:candle
+              - type: entities
+                entities:
+                  - entity: scene.bedroom_concentrate
+                  - entity: scene.bedroom_bedtime_chillin
+                  - entity: scene.bedroom_ruby_romance
+                  - entity: scene.bedroom_galaxy
+                  - entity: scene.hallway_nightlight
+                  - entity: scene.hallway_relax
+            title: Bedroom Lights
+          - type: vertical-stack
+            cards:
+              - square: true
+                type: grid
+                columns: 3
+                cards:
+                  - type: custom:button-card
+                    entity: script.bedroom_heater_toggle_power
+                    icon: mdi:power
+                    name: Power
+                    size: 52%
+                    tap_action:
+                      action: toggle
+                    styles:
+                      card:
+                        - height: 130px
+                        - width: 130px
+                        - border-radius: 14px
+                        - font-size: 20px
+                        - padding: 14px
+                        - background: |
+                            [[[
+                              return states['input_boolean.bedroom_space_heater_power'].state === 'on' 
+                                ? 'rgba(255, 140, 0, 1)' 
+                                : 'var(--card-background-color)';
+                            ]]]
+                      icon:
+                        - width: 52px
+                        - height: 52px
+                      name:
+                        - font-size: 20px
+                  - type: custom:button-card
+                    entity: script.bedroom_heater_toggle_fan_speed
+                    icon: mdi:fan
+                    name: Fan Speed
+                    size: 52%
+                    tap_action:
+                      action: toggle
+                    styles:
+                      card:
+                        - height: 130px
+                        - width: 130px
+                        - border-radius: 14px
+                        - font-size: 20px
+                        - padding: 14px
+                      icon:
+                        - width: 52px
+                        - height: 52px
+                      name:
+                        - font-size: 20px
+                  - type: custom:button-card
+                    entity: script.bedroom_heater_temp_up
+                    icon: mdi:thermometer-plus
+                    name: Temp +
+                    size: 52%
+                    tap_action:
+                      action: toggle
+                    styles:
+                      card:
+                        - height: 130px
+                        - width: 130px
+                        - border-radius: 14px
+                        - font-size: 20px
+                        - padding: 14px
+                      icon:
+                        - width: 52px
+                        - height: 52px
+                      name:
+                        - font-size: 20px
+                  - type: custom:button-card
+                    entity: script.bedroom_heater_toggle_oscillate
+                    icon: mdi:refresh
+                    name: Oscillate
+                    size: 52%
+                    tap_action:
+                      action: toggle
+                    styles:
+                      card:
+                        - height: 130px
+                        - width: 130px
+                        - border-radius: 14px
+                        - font-size: 20px
+                        - padding: 14px
+                      icon:
+                        - width: 52px
+                        - height: 52px
+                      name:
+                        - font-size: 20px
+                  - type: custom:button-card
+                    entity: script.bedroom_heater_sleep_timer_1
+                    icon: mdi:bed-clock
+                    name: Sleep +1hr
+                    size: 52%
+                    tap_action:
+                      action: toggle
+                    styles:
+                      card:
+                        - height: 130px
+                        - width: 130px
+                        - border-radius: 14px
+                        - font-size: 20px
+                        - padding: 14px
+                      icon:
+                        - width: 52px
+                        - height: 52px
+                      name:
+                        - font-size: 20px
+                  - type: custom:button-card
+                    entity: script.bedroom_heater_temp_down
+                    icon: mdi:thermometer-minus
+                    name: Temp -
+                    size: 52%
+                    tap_action:
+                      action: toggle
+                    styles:
+                      card:
+                        - height: 130px
+                        - width: 130px
+                        - border-radius: 14px
+                        - font-size: 20px
+                        - padding: 14px
+                      icon:
+                        - width: 52px
+                        - height: 52px
+                      name:
+                        - font-size: 20px
+                title: Bedroom Space Heater
+          - type: vertical-stack
+            cards:
+              - square: false
+                type: grid
+                columns: 4
+                cards:
+                  - type: custom:button-card
+                    entity: input_boolean.bedroom_window_ac_power
+                    icon: mdi:power
+                    name: Power
+                    tap_action:
+                      action: call-service
+                      service: script.bedroom_window_ac_toggle_power
+                    size: 100%
+                    styles:
+                      card:
+                        - width: 100px
+                        - height: 100px
+                        - border-radius: 12px
+                        - background-color: |
+                            [[[
+                              return states['input_boolean.bedroom_window_ac_power'].state === 'on' ? 'deepskyblue' : 'var(--card-background-color)';
+                            ]]]
+                      icon:
+                        - width: 60%
+                        - height: 60%
+                      name:
+                        - font-size: 11px
+                  - type: custom:button-card
+                    entity: script.bedroom_window_ac_fan_auto
+                    icon: mdi:fan-auto
+                    name: 'Fan: Auto'
+                    tap_action:
+                      action: call-service
+                      service: script.bedroom_window_ac_fan_auto
+                    size: 100%
+                    styles:
+                      card:
+                        - width: 100px
+                        - height: 100px
+                        - border-radius: 12px
+                      icon:
+                        - width: 60%
+                        - height: 60%
+                      name:
+                        - font-size: 11px
+                  - type: custom:button-card
+                    entity: script.bedroom_window_ac_fan_up
+                    icon: mdi:fan-chevron-up
+                    name: Fan +
+                    tap_action:
+                      action: call-service
+                      service: script.bedroom_window_ac_fan_up
+                    size: 100%
+                    styles:
+                      card:
+                        - width: 100px
+                        - height: 100px
+                        - border-radius: 12px
+                      icon:
+                        - width: 60%
+                        - height: 60%
+                      name:
+                        - font-size: 11px
+                  - type: custom:button-card
+                    entity: script.bedroom_window_ac_fan_down
+                    icon: mdi:fan-chevron-down
+                    name: Fan -
+                    tap_action:
+                      action: call-service
+                      service: script.bedroom_window_ac_fan_down
+                    size: 100%
+                    styles:
+                      card:
+                        - width: 100px
+                        - height: 100px
+                        - border-radius: 12px
+                      icon:
+                        - width: 60%
+                        - height: 60%
+                      name:
+                        - font-size: 11px
+                  - type: custom:button-card
+                    entity: script.bedroom_window_ac_mode_cool
+                    name: 'Mode: Cool'
+                    tap_action:
+                      action: call-service
+                      service: script.bedroom_window_ac_mode_cool
+                    size: 100%
+                    styles:
+                      card:
+                        - width: 100px
+                        - height: 100px
+                        - border-radius: 12px
+                      icon:
+                        - width: 60%
+                        - height: 60%
+                      name:
+                        - font-size: 11px
+                  - type: custom:button-card
+                    entity: script.bedroom_window_ac_mode_fan
+                    icon: mdi:fan
+                    name: 'Mode: Fan'
+                    tap_action:
+                      action: call-service
+                      service: script.bedroom_window_ac_mode_fan
+                    size: 100%
+                    styles:
+                      card:
+                        - width: 100px
+                        - height: 100px
+                        - border-radius: 12px
+                      icon:
+                        - width: 60%
+                        - height: 60%
+                      name:
+                        - font-size: 11px
+                  - type: custom:button-card
+                    entity: script.bedroom_window_ac_temp_up
+                    icon: mdi:thermometer-plus
+                    name: Temp +
+                    tap_action:
+                      action: call-service
+                      service: script.bedroom_window_ac_temp_up
+                    size: 100%
+                    styles:
+                      card:
+                        - width: 100px
+                        - height: 100px
+                        - border-radius: 12px
+                      icon:
+                        - width: 60%
+                        - height: 60%
+                      name:
+                        - font-size: 11px
+                  - type: custom:button-card
+                    entity: script.bedroom_window_ac_temp_down
+                    icon: mdi:thermometer-minus
+                    name: Temp -
+                    tap_action:
+                      action: call-service
+                      service: script.bedroom_window_ac_temp_down
+                    size: 100%
+                    styles:
+                      card:
+                        - width: 100px
+                        - height: 100px
+                        - border-radius: 12px
+                      icon:
+                        - width: 60%
+                        - height: 60%
+                      name:
+                        - font-size: 11px
+                title: Window AC
+      - type: grid
+        cards:
+          - square: false
+            type: grid
+            cards:
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: script.bedroom_tv_power_toggle
+                icon: mdi:power
+                hold_action:
+                  action: perform-action
+                  perform_action: remote.turn_on
+                  target:
+                    entity_id: remote.bedroom_roku_box
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                icon: mdi:arrow-up-bold
+                theme: Catppuccin Mocha
+                hold_action:
+                  action: perform-action
+                  perform_action: script.bedroom_tv_up
+                  target: {}
+                entity: script.bedroom_roku_up
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                name: Roku Home
+                entity: script.bedroom_roku_home_button
+                hold_action:
+                  action: perform-action
+                  perform_action: remote.send_command
+                  target:
+                    entity_id: remote.bedroom_roku_box
+                  data:
+                    command: back
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                icon: mdi:arrow-left-bold
+                hold_action:
+                  action: perform-action
+                  perform_action: script.bedroom_tv_left
+                  target: {}
+                entity: script.bedroom_roku_left
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                icon: mdi:circle-box
+                name: Bedroom TV OK
+                hold_action:
+                  action: perform-action
+                  perform_action: script.bedroom_tv_ok
+                  target: {}
+                entity: script.bedroom_roku_select
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                icon: mdi:arrow-right-bold
+                hold_action:
+                  action: perform-action
+                  perform_action: script.bedroom_tv_right
+                  target: {}
+                entity: script.bedroom_roku_right
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: script.bedroom_tv_volume_up
+                icon: mdi:volume-plus
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                icon: mdi:arrow-down-bold
+                hold_action:
+                  action: perform-action
+                  perform_action: script.bedroom_tv_down
+                  target: {}
+                entity: script.bedroom_roku_down
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                icon: mdi:menu
+                entity: script.bedroom_tv_menu
+                hold_action:
+                  action: perform-action
+                  perform_action: remote.send_command
+                  target:
+                    entity_id: remote.bedroom_roku_box
+                  data:
+                    command: select
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: script.bedroom_tv_volume_down
+                icon: mdi:volume-minus
+              - type: media-control
+                entity: media_player.bedroom_roku_box
+                theme: Catppuccin Mocha
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: script.bedroom_tv_mute
+                icon: mdi:volume-mute
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: script.bedroom_roku_back_button
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: script.bedroom_roku_play_button
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: script.bedroom_roku_info
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                icon: ''
+                entity: script.bedroom_tv_brightness_toggle
+                hold_action:
+                  action: perform-action
+                  perform_action: script.bedroom_tv_brightness_toggle_hold
+                  target: {}
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+            columns: 3
+            title: Bedroom TV
+    subview: true
+    cards: []
+  - type: sections
+    max_columns: 4
+    title: Lights
+    path: lights-mobile
+    sections:
+      - type: grid
+        cards:
+          - type: vertical-stack
+            cards:
+              - square: true
+                type: grid
+                cards:
+                  - type: light
+                    entity: light.kitchen
+                    icon: mdi:stove
+                    theme: Catppuccin Frappe
+                  - type: light
+                    entity: light.kitchen_white
+                    icon: mdi:ceiling-light
+                    theme: Catppuccin Frappe
+                  - type: light
+                    entity: light.kitchen_color
+                    icon: mdi:ceiling-light
+                    theme: Catppuccin Frappe
+                columns: 3
+                title: Kitchen
+              - square: true
+                type: grid
+                cards:
+                  - type: light
+                    icon: mdi:coach-lamp
+                    theme: Catppuccin Frappe
+                    entity: light.nabu_casa_ha_connect_zbt_1_porch_lights
+                    name: Front Porch Lights
+                  - type: conditional
+                    conditions:
+                      - entity: light.nabu_casa_ha_connect_zbt_1_porch_lights
+                        state_not: 'off'
+                    card:
+                      type: light
+                      icon: mdi:coach-lamp
+                      theme: Catppuccin Frappe
+                      entity: light.front_porch_light_1
+                      name: Front Porch Light 1
+                  - type: conditional
+                    conditions:
+                      - entity: light.nabu_casa_ha_connect_zbt_1_porch_lights
+                        state_not: 'off'
+                    card:
+                      type: light
+                      icon: mdi:coach-lamp
+                      theme: Catppuccin Frappe
+                      entity: light.front_porch_light_2_2
+                      name: Front Porch Light 2
+                  - type: light
+                    icon: mdi:string-lights
+                    theme: Catppuccin Frappe
+                    entity: light.string_lights
+                    name: Carport
+                columns: 3
+                title: Outside
+              - square: true
+                type: grid
+                cards:
+                  - type: light
+                    icon: mdi:sofa-outline
+                    theme: Catppuccin Frappe
+                    entity: light.living_room
+                  - type: light
+                    icon: mdi:fish
+                    theme: Catppuccin Frappe
+                    entity: light.table_lamp
+                    name: Table Lamp
+                  - type: light
+                    icon: mdi:floor-lamp-torchiere-outline
+                    theme: Catppuccin Frappe
+                    entity: light.floor_lamp
+                  - type: light
+                    icon: mdi:wall-sconce-outline
+                    theme: Catppuccin Frappe
+                    entity: light.couch_reading_light
+                    name: Reading Light
+                  - type: light
+                    icon: mdi:candle
+                    theme: Catppuccin Frappe
+                    entity: light.lr_candle
+                    name: Candle
+                  - type: light
+                    icon: mdi:lamp-outline
+                    theme: Catppuccin Frappe
+                    entity: light.dining_room_lamp
+                    name: Dining Lamp
+                columns: 3
+                title: Living Room
+              - square: true
+                type: grid
+                cards:
+                  - type: light
+                    icon: mdi:bed-double-outline
+                    theme: Catppuccin Frappe
+                    entity: light.bedroom
+                  - type: light
+                    icon: mdi:ceiling-fan-light
+                    theme: Catppuccin Frappe
+                    entity: light.bedroom_ceiling
+                  - type: light
+                    icon: mdi:lamp-outline
+                    theme: Catppuccin Frappe
+                    name: SS Bedside
+                    entity: light.bedside_ss
+                  - type: light
+                    icon: mdi:lamp-outline
+                    theme: Catppuccin Frappe
+                    name: SR Bedside
+                    entity: light.bedside_sr
+                  - type: light
+                    icon: mdi:candle
+                    theme: Catppuccin Frappe
+                    entity: light.bedroom_candle
+                    name: Candle
+                  - type: light
+                    icon: mdi:wall-sconce-outline
+                    theme: Catppuccin Frappe
+                    entity: light.hall_sconce
+                    name: Hall Light
+                columns: 3
+                title: Bedroom
+              - square: true
+                type: grid
+                cards:
+                  - type: light
+                    icon: mdi:lamp-outline
+                    theme: Catppuccin Frappe
+                    entity: light.blue_room_table_lamp
+                    name: Table Lamp
+                columns: 3
+                title: Blue Room
+              - type: entities
+                entities:
+                  - entity: scene.kitchen_kitchen_bright
+                    secondary_info: none
+                    icon: mdi:weather-sunny
+                  - entity: scene.kitchen_natural_light
+                    icon: mdi:weather-sunny
+                    secondary_info: none
+                  - entity: scene.kitchen_relax
+                    icon: mdi:emoticon-cool
+                    secondary_info: none
+                  - entity: scene.kitchen_nightlight
+                    icon: mdi:moon-waning-crescent
+                    secondary_info: none
+                  - entity: scene.living_room_autumn_gold
+                  - entity: scene.living_room_read
+                  - entity: scene.living_room_movie_lights
+                  - entity: scene.living_room_hockey_b_r
+                  - entity: scene.bedroom_concentrate
+                  - entity: scene.bedroom_bedtime_chillin
+                  - entity: scene.bedroom_ruby_romance
+                  - entity: scene.bedroom_galaxy
+                  - entity: scene.hallway_nightlight
+                  - entity: scene.hallway_relax
+    cards: []
+    subview: true
+  - type: sections
+    max_columns: 4
+    title: Thermostats
+    path: thermostats
+    sections:
+      - type: grid
+        cards:
+          - type: vertical-stack
+            cards:
+              - show_current: true
+                show_forecast: true
+                type: weather-forecast
+                entity: weather.forecast_home
+                forecast_type: hourly
+              - show_current: false
+                show_forecast: true
+                type: weather-forecast
+                entity: weather.home
+                forecast_type: daily
+              - type: entities
+                entities:
+                  - entity: sensor.living_room_ir_blaster_temperature
+                    name: Living Room Temperature
+                  - entity: sensor.bedroom_ir_blaster_temperature
+                    name: Bedroom Temperature
+                  - entity: sensor.blue_room_thermometer_temperature
+                    name: Blue Room Temperature
+                  - entity: sensor.home_realfeel_temperature
+                    name: 'Outside Feels Like '
+          - type: vertical-stack
+            cards:
+              - type: custom:mushroom-fan-card
+                entity: fan.dirty_airy
+                show_oscillate_control: false
+                show_percentage_control: false
+              - type: custom:mushroom-entity-card
+                entity: select.dirty_airy_night_light_level
+              - type: history-graph
+                entities:
+                  - entity: sensor.dirty_airy_pm2_5
+                hours_to_show: 4
+                min_y_axis: 0
+                max_y_axis: 1000
+      - type: grid
+        cards:
+          - type: vertical-stack
+            cards:
+              - square: false
+                type: grid
+                title: Mini Split
+                columns: 3
+                cards:
+                  - type: custom:button-card
+                    entity: input_select.mini_split_mode
+                    tap_action:
+                      action: call-service
+                      service: input_select.select_next
+                      target:
+                        entity_id: input_select.mini_split_mode
+                    show_state: false
+                    show_last_changed: true
+                    name: '[[[ return entity.state; ]]]'
+                    icon: |
+                      [[[
+                        return entity.state === "Heat" ? "mdi:fire"
+                             : entity.state === "Cool" ? "mdi:snowflake"
+                             : entity.state === "Fan" ? "mdi:fan"
+                             : "mdi:power";
+                      ]]]
+                    styles:
+                      card:
+                        - background-color: "[[[\n  return entity.state === \"Heat\" ? \"#FFA500\"  /* Orange */\n       : entity.state === \"Cool\" ? \"#00BFFF\t\"  /* Light Blue */\n       : entity.state === \"Fan\" ? \"#32CD32\"  /* Green */\n       : \"var(--card-background-color)\";  /* Default */\n]]]\n"
+                        - color: black
+                  - type: custom:button-card
+                    entity: script.living_room_mini_split_off
+                    name: Power Off
+                    icon: mdi:power
+                    tap_action:
+                      action: call-service
+                      service: script.living_room_mini_split_off
+                    show_last_changed: true
+                  - type: custom:button-card
+                    entity: script.living_room_fan
+                    name: Fan
+                    icon: mdi:fan
+                    tap_action:
+                      action: call-service
+                      service: script.living_room_fan
+                    show_last_changed: true
+                  - type: custom:button-card
+                    entity: script.living_room_night_heat
+                    name: Heat (70)
+                    icon: mdi:fire
+                    tap_action:
+                      action: call-service
+                      service: script.living_room_night_heat
+                    show_last_changed: true
+                  - type: custom:button-card
+                    entity: script.living_room_maintain_heat_74
+                    name: Heat (74)
+                    icon: mdi:fire
+                    tap_action:
+                      action: call-service
+                      service: script.living_room_maintain_heat_74
+                    show_last_changed: true
+                  - type: custom:button-card
+                    entity: script.living_room_cold_62
+                    name: Cold (62)
+                    icon: mdi:snowflake
+                    tap_action:
+                      action: call-service
+                      service: script.living_room_cold_62
+                    show_last_changed: true
+                  - type: custom:button-card
+                    entity: script.living_room_day_warm_up_76
+                    name: Heat (76)
+                    icon: mdi:fire
+                    tap_action:
+                      action: call-service
+                      service: script.living_room_day_warm_up_76
+                    show_last_changed: true
+                  - type: custom:button-card
+                    entity: script.living_room_rapid_head_80
+                    name: Heat (80)
+                    icon: mdi:fire
+                    tap_action:
+                      action: call-service
+                      service: script.living_room_rapid_head_80
+                    show_last_changed: true
+                  - type: custom:button-card
+                    entity: script.living_room_cool_66
+                    name: Cool (66)
+                    icon: mdi:snowflake
+                    tap_action:
+                      action: call-service
+                      service: script.living_room_cool_66
+                    show_last_changed: true
+          - type: entities
+            entities:
+              - entity: automation.night_heat_when_going_to_bed
+              - entity: automation.set_heat_for_day
+              - entity: automation.turn_off_heat_when_outside_temp_is_over_55
+              - entity: automation.turn_on_heat_when_outside_below_40
+      - type: grid
+        cards:
+          - type: vertical-stack
+            cards:
+              - square: true
+                type: grid
+                columns: 3
+                cards:
+                  - type: custom:button-card
+                    entity: script.bedroom_heater_toggle_power
+                    icon: mdi:power
+                    name: Power
+                    size: 52%
+                    tap_action:
+                      action: toggle
+                    styles:
+                      card:
+                        - height: 130px
+                        - width: 130px
+                        - border-radius: 14px
+                        - font-size: 20px
+                        - padding: 14px
+                        - background: |
+                            [[[
+                              return states['input_boolean.bedroom_space_heater_power'].state === 'on' 
+                                ? 'rgba(255, 140, 0, 1)' 
+                                : 'var(--card-background-color)';
+                            ]]]
+                      icon:
+                        - width: 52px
+                        - height: 52px
+                      name:
+                        - font-size: 20px
+                  - type: custom:button-card
+                    entity: script.bedroom_heater_toggle_fan_speed
+                    icon: mdi:fan
+                    name: Fan Speed
+                    size: 52%
+                    tap_action:
+                      action: toggle
+                    styles:
+                      card:
+                        - height: 130px
+                        - width: 130px
+                        - border-radius: 14px
+                        - font-size: 20px
+                        - padding: 14px
+                      icon:
+                        - width: 52px
+                        - height: 52px
+                      name:
+                        - font-size: 20px
+                  - type: custom:button-card
+                    entity: script.bedroom_heater_temp_up
+                    icon: mdi:thermometer-plus
+                    name: Temp +
+                    size: 52%
+                    tap_action:
+                      action: toggle
+                    styles:
+                      card:
+                        - height: 130px
+                        - width: 130px
+                        - border-radius: 14px
+                        - font-size: 20px
+                        - padding: 14px
+                      icon:
+                        - width: 52px
+                        - height: 52px
+                      name:
+                        - font-size: 20px
+                  - type: custom:button-card
+                    entity: script.bedroom_heater_toggle_oscillate
+                    icon: mdi:refresh
+                    name: Oscillate
+                    size: 52%
+                    tap_action:
+                      action: toggle
+                    styles:
+                      card:
+                        - height: 130px
+                        - width: 130px
+                        - border-radius: 14px
+                        - font-size: 20px
+                        - padding: 14px
+                      icon:
+                        - width: 52px
+                        - height: 52px
+                      name:
+                        - font-size: 20px
+                  - type: custom:button-card
+                    entity: script.bedroom_heater_sleep_timer_1
+                    icon: mdi:bed-clock
+                    name: Sleep +1hr
+                    size: 52%
+                    tap_action:
+                      action: toggle
+                    styles:
+                      card:
+                        - height: 130px
+                        - width: 130px
+                        - border-radius: 14px
+                        - font-size: 20px
+                        - padding: 14px
+                      icon:
+                        - width: 52px
+                        - height: 52px
+                      name:
+                        - font-size: 20px
+                  - type: custom:button-card
+                    entity: script.bedroom_heater_temp_down
+                    icon: mdi:thermometer-minus
+                    name: Temp -
+                    size: 52%
+                    tap_action:
+                      action: toggle
+                    styles:
+                      card:
+                        - height: 130px
+                        - width: 130px
+                        - border-radius: 14px
+                        - font-size: 20px
+                        - padding: 14px
+                      icon:
+                        - width: 52px
+                        - height: 52px
+                      name:
+                        - font-size: 20px
+                title: Bedroom Space Heater
+          - type: vertical-stack
+            cards:
+              - square: false
+                type: grid
+                columns: 4
+                cards:
+                  - type: custom:button-card
+                    entity: input_boolean.bedroom_window_ac_power
+                    icon: mdi:power
+                    name: Power
+                    tap_action:
+                      action: call-service
+                      service: script.bedroom_window_ac_toggle_power
+                    size: 100%
+                    styles:
+                      card:
+                        - width: 100px
+                        - height: 100px
+                        - border-radius: 12px
+                        - background-color: |
+                            [[[
+                              return states['input_boolean.bedroom_window_ac_power'].state === 'on' ? 'deepskyblue' : 'var(--card-background-color)';
+                            ]]]
+                      icon:
+                        - width: 60%
+                        - height: 60%
+                      name:
+                        - font-size: 11px
+                  - type: custom:button-card
+                    entity: script.bedroom_window_ac_fan_auto
+                    icon: mdi:fan-auto
+                    name: 'Fan: Auto'
+                    tap_action:
+                      action: call-service
+                      service: script.bedroom_window_ac_fan_auto
+                    size: 100%
+                    styles:
+                      card:
+                        - width: 100px
+                        - height: 100px
+                        - border-radius: 12px
+                      icon:
+                        - width: 60%
+                        - height: 60%
+                      name:
+                        - font-size: 11px
+                  - type: custom:button-card
+                    entity: script.bedroom_window_ac_fan_up
+                    icon: mdi:fan-chevron-up
+                    name: Fan +
+                    tap_action:
+                      action: call-service
+                      service: script.bedroom_window_ac_fan_up
+                    size: 100%
+                    styles:
+                      card:
+                        - width: 100px
+                        - height: 100px
+                        - border-radius: 12px
+                      icon:
+                        - width: 60%
+                        - height: 60%
+                      name:
+                        - font-size: 11px
+                  - type: custom:button-card
+                    entity: script.bedroom_window_ac_fan_down
+                    icon: mdi:fan-chevron-down
+                    name: Fan -
+                    tap_action:
+                      action: call-service
+                      service: script.bedroom_window_ac_fan_down
+                    size: 100%
+                    styles:
+                      card:
+                        - width: 100px
+                        - height: 100px
+                        - border-radius: 12px
+                      icon:
+                        - width: 60%
+                        - height: 60%
+                      name:
+                        - font-size: 11px
+                  - type: custom:button-card
+                    entity: script.bedroom_window_ac_mode_cool
+                    name: 'Mode: Cool'
+                    tap_action:
+                      action: call-service
+                      service: script.bedroom_window_ac_mode_cool
+                    size: 100%
+                    styles:
+                      card:
+                        - width: 100px
+                        - height: 100px
+                        - border-radius: 12px
+                      icon:
+                        - width: 60%
+                        - height: 60%
+                      name:
+                        - font-size: 11px
+                  - type: custom:button-card
+                    entity: script.bedroom_window_ac_mode_fan
+                    icon: mdi:fan
+                    name: 'Mode: Fan'
+                    tap_action:
+                      action: call-service
+                      service: script.bedroom_window_ac_mode_fan
+                    size: 100%
+                    styles:
+                      card:
+                        - width: 100px
+                        - height: 100px
+                        - border-radius: 12px
+                      icon:
+                        - width: 60%
+                        - height: 60%
+                      name:
+                        - font-size: 11px
+                  - type: custom:button-card
+                    entity: script.bedroom_window_ac_temp_up
+                    icon: mdi:thermometer-plus
+                    name: Temp +
+                    tap_action:
+                      action: call-service
+                      service: script.bedroom_window_ac_temp_up
+                    size: 100%
+                    styles:
+                      card:
+                        - width: 100px
+                        - height: 100px
+                        - border-radius: 12px
+                      icon:
+                        - width: 60%
+                        - height: 60%
+                      name:
+                        - font-size: 11px
+                  - type: custom:button-card
+                    entity: script.bedroom_window_ac_temp_down
+                    icon: mdi:thermometer-minus
+                    name: Temp -
+                    tap_action:
+                      action: call-service
+                      service: script.bedroom_window_ac_temp_down
+                    size: 100%
+                    styles:
+                      card:
+                        - width: 100px
+                        - height: 100px
+                        - border-radius: 12px
+                      icon:
+                        - width: 60%
+                        - height: 60%
+                      name:
+                        - font-size: 11px
+                title: Window AC
+          - type: horizontal-stack
+            cards:
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: switch.third_reality_inc_3rsp02028bz_switch
+                name: Blue Room Fan
+                icon: mdi:fan
+                show_state: false
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                name: Blue Room Heater
+                icon: mdi:radiator
+                show_state: false
+                entity: switch.blue_room_heater_smart_plug
+            title: Blue Room Climate
+    subview: true
+    cards: []
+  - type: sections
+    max_columns: 4
+    title: Automations
+    path: automations
+    sections:
+      - type: grid
+        cards:
+          - type: entities
+            entities:
+              - entity: automation.night_heat_when_going_to_bed
+              - entity: automation.set_heat_for_day
+              - entity: automation.turn_off_heat_when_outside_temp_is_over_55
+              - entity: automation.turn_on_heat_when_outside_below_40
+            title: Living Room Thermostat
+            state_color: true
+          - type: entities
+            entities:
+              - entity: automation.weekend_bedroom_news_alarm
+              - entity: automation.roku_new_automation_test
+              - entity: automation.morning_news_on_living_room_tv
+            title: TV Automations
+            state_color: true
+      - type: grid
+        cards:
+          - type: entities
+            entities:
+              - entity: automation.morning_living_room_and_carport_lights_turn_on
+              - entity: >-
+                  automation.set_bedroom_chill_lights_when_sr_phone_is_charging_at_night
+              - entity: automation.turn_off_carport_lights_1_hour_after_sunrise
+            title: Lighting Automations
+            state_color: true
+          - type: entities
+            entities:
+              - entity: automation.bedroom_night_heat_auto_on_test
+              - entity: automation.bedroom_space_heater_night_off_auto_test
+            title: Bedroom Thermostat
+    subview: true
+    cards: []
+  - type: sections
+    max_columns: 1
+    title: Camera Feeds
+    path: camera-feeds
+    subview: true
+    sections:
+      - type: grid
+        cards:
+          - show_state: true
+            show_name: true
+            camera_view: live
+            type: picture-entity
+            image: https://demo.home-assistant.io/stub_config/bedroom.png
+            hold_action:
+              action: perform-action
+              perform_action: script.toggle_kitchen_camera_mute
+              target: {}
+            entity: camera.kitchen_camera_sd_stream
+            name: 'Kitchen Camera '
+            camera_image: camera.kitchen_camera_sd_stream
+          - square: false
+            type: grid
+            cards:
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: button.kitchen_camera_move_up
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: button.kitchen_camera_move_down
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: button.kitchen_camera_move_left
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: button.kitchen_camera_move_right
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: switch.kitchen_camera_privacy
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: switch.kitchen_camera_auto_track
+                show_state: false
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: perform-action
+                  perform_action: script.toggle_kitchen_camera_preset
+                  target: {}
+                entity: select.kitchen_camera_move_to_preset
+                show_state: false
+                hold_action:
+                  action: perform-action
+                  perform_action: script.toggle_kitchen_camera_preset_kitchen
+                  target: {}
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: perform-action
+                  perform_action: script.toggle_kitchen_camera_patrol_on
+                  target: {}
+                show_state: false
+                hold_action:
+                  action: perform-action
+                  perform_action: script.toggle_kitchen_camera_patrol_off
+                  target: {}
+                entity: select.kitchen_camera_patrol_mode
+            columns: 4
+          - show_state: true
+            show_name: true
+            camera_view: live
+            type: picture-entity
+            image: https://demo.home-assistant.io/stub_config/bedroom.png
+            hold_action:
+              action: perform-action
+              perform_action: script.toggle_living_room_camera_mute
+              target: {}
+            camera_image: camera.living_room_camera_sd_stream
+            entity: camera.living_room_camera_sd_stream
+            name: Living Room Camera
+          - square: false
+            type: grid
+            cards:
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: button.living_room_camera_move_up
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: button.living_room_camera_move_down
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: button.living_room_camera_move_left
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: button.living_room_camera_move_right
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: switch.living_room_camera_privacy
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: switch.living_room_camera_auto_track
+                show_state: false
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: perform-action
+                  perform_action: script.toggle_living_room_camera_preset_doors
+                  target: {}
+                show_state: false
+                hold_action:
+                  action: perform-action
+                  perform_action: script.toggle_living_room_camera_preset_couch
+                  target: {}
+                entity: select.living_room_camera_move_to_preset
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: perform-action
+                  perform_action: script.toggle_living_room_camera_patrol_on
+                  target: {}
+                show_state: false
+                hold_action:
+                  action: perform-action
+                  perform_action: script.toggle_living_room_camera_patrol_off
+                  target: {}
+                entity: select.living_room_camera_patrol_mode
+            columns: 4
+  - type: sections
+    max_columns: 1
+    title: 'Medications '
+    path: medications
+    subview: true
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            heading: New section
+          - type: entities
+            entities:
+              - entity: input_boolean.ripley_allergy_medicine_given
+                secondary_info: last-changed
+              - entity: input_boolean.ripley_bravecto_rx_given
+                secondary_info: last-changed
+              - entity: input_boolean.ripley_sentinel_rx_given
+                secondary_info: last-changed
+          - type: logbook
+            target:
+              entity_id:
+                - input_boolean.ripley_allergy_medicine_given
+                - input_boolean.ripley_bravecto_rx_given
+                - input_boolean.ripley_sentinel_rx_given
+            hours_to_show: 2400
+  - type: sections
+    max_columns: 1
+    title: Blue Room
+    path: blue-room
+    subview: true
+    sections:
+      - type: grid
+        cards:
+          - type: light
+            entity: light.blue_room_table_lamp
+            icon: mdi:lamp
+          - type: vertical-stack
+            cards:
+              - type: custom:mushroom-entity-card
+                fill_container: false
+                entity: sensor.blue_room_thermometer_temperature
+                name: Blue Room Temp
+              - type: custom:mushroom-entity-card
+                fill_container: false
+                name: Outside Feels Like
+                entity: sensor.home_realfeel_temperature
+          - type: horizontal-stack
+            cards:
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: switch.third_reality_inc_3rsp02028bz_switch
+                name: Blue Room Fan
+                icon: mdi:fan
+                show_state: false
+              - show_name: true
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                name: Blue Room Heater
+                icon: mdi:radiator
+                show_state: false
+                entity: switch.blue_room_heater_smart_plug
+      - type: grid
+        cards:
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: none
+            entity: input_select.cube1_last_face
+            show_state: true
+            hold_action:
+              action: none
+            name: 'Face:'
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            show_state: true
+            icon: mdi:cube
+            entity: input_boolean.cube_toggle_a_b
+          - show_name: true
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            entity: input_boolean.cube_toggle_1_2
+            show_state: true
+  - type: sections
+    max_columns: 1
+    subview: true
+    path: outside
+    title: Outside
+    icon: ''
+    sections:
+      - type: grid
+        cards:
+          - type: entities
+            entities:
+              - entity: sensor.home_realfeel_temperature
+              - entity: sensor.sun_next_rising
+              - entity: sensor.sun_next_setting
+          - type: heading
+            heading_style: title
+            heading: Lights
+          - square: true
+            type: grid
+            cards:
+              - type: light
+                entity: light.string_lights
+                icon: mdi:string-lights
+              - type: light
+                entity: light.nabu_casa_ha_connect_zbt_1_porch_lights
+                icon: mdi:coach-lamp
+            columns: 2
+          - show_state: true
+            show_name: true
+            camera_view: live
+            type: picture-entity
+            image: https://demo.home-assistant.io/stub_config/bedroom.png
+            hold_action:
+              action: perform-action
+              perform_action: script.toggle_kitchen_camera_mute
+              target: {}
+            entity: camera.kitchen_camera_sd_stream
+            name: 'Kitchen Camera '
+            camera_image: camera.kitchen_camera_sd_stream
+          - square: false
+            type: grid
+            cards:
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: button.kitchen_camera_move_up
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: button.kitchen_camera_move_down
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: button.kitchen_camera_move_left
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: button.kitchen_camera_move_right
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: switch.kitchen_camera_privacy
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: toggle
+                entity: switch.kitchen_camera_auto_track
+                show_state: false
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: perform-action
+                  perform_action: script.toggle_kitchen_camera_preset
+                  target: {}
+                entity: select.kitchen_camera_move_to_preset
+                show_state: false
+                hold_action:
+                  action: perform-action
+                  perform_action: script.toggle_kitchen_camera_preset_kitchen
+                  target: {}
+              - show_name: false
+                show_icon: true
+                type: button
+                tap_action:
+                  action: perform-action
+                  perform_action: script.toggle_kitchen_camera_patrol_on
+                  target: {}
+                show_state: false
+                hold_action:
+                  action: perform-action
+                  perform_action: script.toggle_kitchen_camera_patrol_off
+                  target: {}
+                entity: select.kitchen_camera_patrol_mode
+            columns: 4
+  - type: sections
+    max_columns: 1
+    title: Admin
+    path: admin
+    subview: true
+    sections:
+      - type: grid
+        cards:
+          - type: entities
+            entities:
+              - entity: automation.bedroom_night_heat_auto_on_test
+              - entity: automation.bedroom_space_heater_night_off_auto_test
+              - entity: automation.kitchen_camera_person_detection_alert
+              - entity: automation.kitchen_camera_snapshots_test
+              - entity: automation.notify_when_any_automation_completes
+            state_color: true
+            title: Test Automations
+          - type: entities
+            entities:
+              - entity: automation.cube_side_1_turn_left_turn_blue_room_fan_off
+              - entity: automation.cube_side_1_turn_right_turn_on_blue_room_fan
+              - entity: automation.cube_side_2_toggle_on_turn_left_kitchen_camera_left
+              - entity: >-
+                  automation.cube_side_2_toggle_on_turn_right_kitchen_camera_right
+              - entity: >-
+                  automation.cube_side_2_shake_on_knock_on_turn_left_kitchen_camera_down
+              - entity: >-
+                  automation.cube_side_2_shake_on_knock_on_turn_left_kitchen_camera_down_2
+              - entity: >-
+                  automation.cube_side_3_toggle_on_turn_left_living_room_camera_left
+              - entity: >-
+                  automation.cube_side_3_toggle_on_turn_right_living_room_camera_right
+              - entity: automation.cube_knock_toggle_1_2
+              - entity: automation.cube_shake_toggle_a_b
+            title: Cube Automations
+            state_color: true
+  - type: sections
+    max_columns: 1
+    title: Bathroom
+    path: bathroom
+    subview: true
+    sections:
+      - type: grid
+        cards:
+          - type: picture-elements
+            image: >-
+              https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDJ5bnB6eThscjB5ZDZtcTJ3dGhjMmRjZ3Q3MG1wYjVpdnc0bzJmZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/sU511xfb7ORqw/giphy.gif
+            elements:
+              - type: image
+                image: https://media.giphy.com/media/kDsjinzVzi1Ko/giphy.gif
+                style:
+                  top: 75%
+                  left: 85%
+                  width: 125px
+                  height: auto
+              - type: image
+                image: https://media.giphy.com/media/kDsjinzVzi1Ko/giphy.gif
+                style:
+                  top: 75%
+                  left: 15%
+                  width: 125px
+                  height: auto
+              - type: image
+                image: >-
+                  https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnF1Nmg5MnRsN3phbXM5amVqdDR2NDc0MHQ3aWdwM3I2MnVtdGNzciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/cfGmVRsJI6wq6noGxP/giphy.gif
+                style:
+                  top: 20%
+                  left: 85%
+                  width: 125px
+                  height: auto

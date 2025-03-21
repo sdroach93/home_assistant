@@ -1,0 +1,24 @@
+- id: ripley_medicine_reminder
+  alias: "Ripley Allergy Medicine Reminder"
+  description: "Sends a reminder to give Ripley her allergy medicine every 5 minutes until it is marked as given."
+  trigger:
+    - platform: time_pattern
+      minutes: "*/5"  # Runs every 5 minutes
+  condition:
+    - condition: time
+      after: "07:00:00"
+      before: "08:00:00"
+    - condition: state
+      entity_id: input_boolean.ripley_allergy_medicine_given
+      state: "off"
+  action:
+    - service: notify.mobile_app_sr_phone
+      data:
+        title: "Ripley's Allergy Medicine Reminder"
+        message: Time to give Ripley her allergy medicine! Please scan the NFC tag when done.
+        data:
+          tag: "ripley_medicine"
+          actions:
+            - action: "URI"
+              title: "View Medications"
+              uri: "/lovelace/medications"
